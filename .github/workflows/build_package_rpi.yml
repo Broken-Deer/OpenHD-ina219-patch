@@ -35,7 +35,7 @@ jobs:
         base_image: raspios_lite:2023-05-03
         image_additional_mb: 4000
         copy_repository_path: /opt
-        copy_artifact_path: OpenHD
+        copy_artifact_path: OpenHD-ina219-patch
         import_github_env: true
         commands: |
             cd /opt
@@ -44,16 +44,16 @@ jobs:
             touch /usr/local/share/openhd/joyconfig.txt
             sudo ./install_build_dep.sh rpi
             cd /opt
-            cd OpenHD
+            cd OpenHD-ina219-patch
             chown -R root:root ../OpenHD
             sudo ./package.sh standard armhf raspbian bullseye
 
     - name: Upload to Github
       uses: 'actions/upload-artifact@v4'
       with:
-        name: "OpenHD"
+        name: "OpenHD-ina219-patch"
         path: |
-          OpenHD/*.deb
+          OpenHD-ina219-patch/*.deb
         if-no-files-found: error
 
     - name: Push
