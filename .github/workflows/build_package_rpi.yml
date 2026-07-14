@@ -45,7 +45,7 @@ jobs:
             sudo ./install_build_dep.sh rpi
             cd /opt
             cd OpenHD-ina219-patch
-            chown -R root:root ../OpenHD
+            chown -R root:root ../OpenHD-ina219-patch
             sudo ./package.sh standard armhf raspbian bullseye
 
     - name: Upload to Github
